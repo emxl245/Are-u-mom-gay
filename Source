@@ -1,0 +1,116 @@
+function loadstr(linkN)
+loadstring(game:HttpGet(linkN))();
+end
+local lib = {};
+function lib.create(newName,loader)
+local Design = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local begin = Instance.new("TextButton")
+local begin_Roundify_12px = Instance.new("ImageLabel")
+local BeginLabel = Instance.new("TextLabel")
+local TextLabel = Instance.new("TextLabel")
+local exit = Instance.new("TextButton")
+
+local PARENT
+if game:GetService("CoreGui"):FindFirstChild('RobloxGui') then
+    PARENT = game:GetService("CoreGui").RobloxGui
+else
+    PARENT = game:GetService("CoreGui")
+end
+function randomString()
+    local length = math.random(10,20)
+    local array = {}
+    for i = 1, length do
+        array[i] = string.char(math.random(32, 126))
+    end
+    return table.concat(array)
+end
+
+Design.Name = "Design"
+Design.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Design.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = Design
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.433510661, 0, 0.411352366, 0)
+Frame.Size = UDim2.new(0, 291, 0, 137)
+
+begin.Name = "begin"
+begin.Parent = Frame
+begin.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+begin.BackgroundTransparency = 1.000
+begin.BorderColor3 = Color3.fromRGB(0, 0, 0)
+begin.BorderSizePixel = 0
+begin.Position = UDim2.new(0.171821311, 0, 0.623452723, 0)
+begin.Size = UDim2.new(0, 192, 0, 31)
+begin.Font = Enum.Font.SourceSans
+begin.Text = "Start"
+begin.TextColor3 = Color3.fromRGB(255, 255, 255)
+begin.TextSize = 20.000
+
+begin_Roundify_12px.Name = "begin_Roundify_12px"
+begin_Roundify_12px.Parent = begin
+begin_Roundify_12px.Active = true
+begin_Roundify_12px.AnchorPoint = Vector2.new(0.5, 0.5)
+begin_Roundify_12px.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+begin_Roundify_12px.BackgroundTransparency = 1.000
+begin_Roundify_12px.Position = UDim2.new(0.494791657, 0, 0.5, 0)
+begin_Roundify_12px.Selectable = true
+begin_Roundify_12px.Size = UDim2.new(1, 0, 1, 0)
+begin_Roundify_12px.Image = "rbxassetid://3570695787"
+begin_Roundify_12px.ImageColor3 = Color3.fromRGB(58, 58, 58)
+begin_Roundify_12px.ScaleType = Enum.ScaleType.Slice
+begin_Roundify_12px.SliceCenter = Rect.new(100, 100, 100, 100)
+begin_Roundify_12px.SliceScale = 0.120
+
+BeginLabel.Name = "BeginLabel"
+BeginLabel.Parent = begin
+BeginLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BeginLabel.BackgroundTransparency = 1.000
+BeginLabel.BorderSizePixel = 0
+BeginLabel.Position = UDim2.new(0.0260416716, 0, 0.0188172087, 0)
+BeginLabel.Size = UDim2.new(0, 180, 0, 30)
+BeginLabel.Font = Enum.Font.Highway
+BeginLabel.Text = "Start"
+BeginLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+BeginLabel.TextSize = 24.000
+
+TextLabel.Parent = BeginLabel
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(-0.0599083751, 0, -2.13844275, 0)
+TextLabel.Size = UDim2.new(0, 203, 0, 31)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Cool Kids"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 30.000
+TextLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+
+exit.Name = "exit"
+exit.Parent = Frame
+exit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+exit.BackgroundTransparency = 1.000
+exit.BorderSizePixel = 0
+exit.Position = UDim2.new(0.927835047, 0, 0, 0)
+exit.Size = UDim2.new(0, 20, 0, 22)
+exit.Font = Enum.Font.SourceSansLight
+exit.Text = "X"
+exit.TextColor3 = Color3.fromRGB(255, 255, 255)
+exit.TextScaled = true
+exit.TextSize = 14.000
+exit.TextWrapped = true
+
+exit.MouseButton1Click:Connect(function()
+	Design:Destroy()
+end)
+
+begin.MouseButton1Click:Connect(function()
+	loadstr(loader)
+	Design:Destroy()
+end)
+
+end
+
+return lib
